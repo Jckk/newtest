@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DemoRecycleView</string>
+    <string name="test">跳转recyclerview</string>
+</resources>
