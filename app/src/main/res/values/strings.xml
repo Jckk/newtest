@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">DemoRecycleView</string>
     <string name="test">跳转recyclerview</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="login_select_agree">登录即代表你同意</string>
+    <string name="login_select_privacy"><u>%1$s服务和隐私条款</u></string>
+
 </resources>

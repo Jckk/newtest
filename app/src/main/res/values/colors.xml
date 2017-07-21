@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="yunkacolor">#6e0da0</color>
+
+    <color name="me_btn_bg_press">#ff6e6e6e</color>
+    <color name="transparent">#00000000</color>
+    <color name="yunkacolor_60">#6e0da0</color>
 </resources>

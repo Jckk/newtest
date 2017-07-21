@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import Base.BaseObserver;
 import Base.BasePresenter;
 import Base.BaseResponse;
 import Retrefit.RetrefitManger;
@@ -23,43 +24,32 @@ import rx.schedulers.Schedulers;
  * Created by Administrator on 2017/7/17 0017.
  */
 
-public class RechargePresenter extends BasePresenter {
+public class RechargePresenter extends BasePresenter<RechargeInterface> {
     private RetrefitManger mretrefitManger;
     private Context mcontext;
     private RechargeInfo mrechargeInfo;
     private RechargeInterface mrechargeInterface;
 
-    public RechargePresenter(Context context){
+    public RechargePresenter(Context context,RechargeInterface rechargeInterface){
+        super(rechargeInterface);
         mretrefitManger=new RetrefitManger(context);
         this.mcontext=context;
     }
 
     public void loadRechargeMap(int type,String token){
         Subscription subscription = mretrefitManger.rechargeinfo(type,token)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<RechargeInfo>(){
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseResponse<RechargeInfo>>(getUiInterface()) {
                     @Override
-                    public void onCompleted() {
-                        Log.i("info", "onCompleted: "+"请求完成");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.i("info", "onError: "+"请求失败");
-
-                    }
-
-                    @Override
-                    public void onNext(RechargeInfo rechargeInfo) {
-                        mrechargeInfo=rechargeInfo;
-                        mrechargeInterface.showRechargeList(rechargeInfo.getList());
-                        Log.i("info", "onNext: "+rechargeInfo);
+                    public void onSuccess(BaseResponse<RechargeInfo> response) {
+                            getUiInterface().showRechargeList(response.getData().getList());
+                        Log.i("info", "onSuccess: "+response.getData().getList());
                     }
                 });
+
         addSubscription(subscription);
 
     }
-
 
 }

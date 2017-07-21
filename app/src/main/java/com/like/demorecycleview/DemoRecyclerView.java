@@ -1,6 +1,7 @@
 package com.like.demorecycleview;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -30,18 +31,6 @@ public class DemoRecyclerView extends Activity implements RechargeInterface {
 
     private RecyclerView recyclerView;
     private RechargePresenter mrechargePresenter;
-   /* @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.activity_recycleview);
-        recyclerView= (RecyclerView) findViewById(R.id.test_recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-       // recyclerView.addItemDecoration(1);
-        mrechargePresenter=new RechargePresenter(this);
-        mrechargePresenter.loadRechargeMap(2000);
-    }*/
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +39,7 @@ public class DemoRecyclerView extends Activity implements RechargeInterface {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         // recyclerView.addItemDecoration(1);
-        mrechargePresenter=new RechargePresenter(this);
+        mrechargePresenter=new RechargePresenter(this,this);
         mrechargePresenter.loadRechargeMap(2,"b2d57ac6b86baa2552a812a3ee68bf46");
     }
 
@@ -59,6 +48,37 @@ public class DemoRecyclerView extends Activity implements RechargeInterface {
         recyclerView.setAdapter(new RechargeMapAdapter(list));
 
     }
+
+    @Override
+    public void showNetworkException() {
+
+    }
+
+    @Override
+    public void showUnknownException() {
+
+    }
+
+    @Override
+    public void showDataException(String msg) {
+
+    }
+
+    @Override
+    public void showLoadingComplete() {
+
+    }
+
+    @Override
+    public Dialog showLoadingDialog() {
+        return null;
+    }
+
+    @Override
+    public void dismissLoadingDialog() {
+
+    }
+
     private class RechargeMapAdapter extends SimpleRecyclerAdapter<RechargeItem,
             RechargeMapHolder> {
         public RechargeMapAdapter(List<RechargeItem> list) {
@@ -86,9 +106,9 @@ public class DemoRecyclerView extends Activity implements RechargeInterface {
            /* tvCurrency = $(itemView, R.id.item_recharge_tv_coin_amount);
             tvRmb = $(itemView, R.id.item_recharge_tv_rmb_amount);
             tvTips = $(itemView, R.id.item_recharge_tv_tips);*/
-           tvCurrency= (TextView) findViewById(R.id.item_recharge_tv_coin_amount);
-            tvRmb= (TextView) findViewById(R.id.item_recharge_tv_rmb_amount);
-            tvTips= (TextView) findViewById(R.id.item_recharge_tv_tips);
+           tvCurrency= (TextView) itemView.findViewById(R.id.item_recharge_tv_coin_amount);
+            tvRmb= (TextView) itemView.findViewById(R.id.item_recharge_tv_rmb_amount);
+            tvTips= (TextView) itemView.findViewById(R.id.item_recharge_tv_tips);
         }
 
         @Override
