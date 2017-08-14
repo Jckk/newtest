@@ -1,15 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.like.demorecycleview.MainActivity">
+    android:background="@drawable/bg_login_select"
+>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/main_title"
+        android:textSize="25sp"
+        android:id="@+id/textView" />
+    <TextView
+        android:id="@+id/baidulbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_md_title"
+        android:text="@string/baidulbs"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:textColor="@color/colorAccent"
+        />
 
     <Button
+
         android:id="@+id/btn_recyclerview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/test"/>
+        android:text="@string/test"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"       />
+    <Button
+        android:id="@+id/btn_loginout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_out"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/app_vesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:textSize="17sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorAccent"/>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_chat_with_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_with_service"
+        android:layout_above="@+id/btn_loginout"
+        android:layout_alignLeft="@+id/btn_loginout"
+        android:layout_alignStart="@+id/btn_loginout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="49dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ID"
+        android:layout_above="@+id/tv_chat_with_service"
+        android:layout_alignLeft="@+id/btn_loginout"
+        android:layout_alignStart="@+id/btn_loginout"
+        android:layout_marginBottom="82dp"
+        android:id="@+id/textView2" />
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0000"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+</RelativeLayout>

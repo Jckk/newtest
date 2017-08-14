@@ -9,4 +9,5 @@
     <color name="me_btn_bg_press">#ff6e6e6e</color>
     <color name="transparent">#00000000</color>
     <color name="yunkacolor_60">#6e0da0</color>
+    <color name="view_bg">#ff9e9e9e</color>
 </resources>

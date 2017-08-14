@@ -1,9 +1,21 @@
 <resources>
-    <string name="app_name">DemoRecycleView</string>
-    <string name="test">跳转recyclerview</string>
+    <!--<string name="app_name">DemoRecycleView</string>-->
+    <string name="test">跳转充值</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
     <string name="login_select_agree">登录即代表你同意</string>
     <string name="login_select_privacy"><u>%1$s服务和隐私条款</u></string>
+    <string name="main_title">这是主页面</string>
+    <string name="login_out">退出登录</string>
+    <string name="version">版本：%1$s</string>
+    <string name="baidulbs">百度定位</string>
+    <string name="chat_with_service">联系客服</string>
+    <string name="ID">ID:</string>
+    <!--recharge-->
+    <string name="recharge_way">请选择支付方式</string>
+    <string name="recharge_alipay">支付宝支付</string>
+    <string name="recharge_wechat">微信支付</string>
+    <string name="choosed_recharge_way">支付方式:%1$s</string>
+
 
 </resources>

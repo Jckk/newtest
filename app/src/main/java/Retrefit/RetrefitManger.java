@@ -2,10 +2,11 @@ package Retrefit;
 
 import android.content.Context;
 
-import com.like.demorecycleview.login.LoginInfo;
+import com.woman.samecity.login.LoginInfo;
 
 import Base.BaseResponse;
 import Recharge.RechargeInfo;
+import Recharge.wechatpay.WxpayInfo;
 import rx.Observable;
 
 /**
@@ -18,6 +19,7 @@ public class RetrefitManger {
     public RetrefitManger(Context context){
         this.api=RetrofitHelper.getInstance(context).getServer();
     }
+    //充值列表
    public  Observable<BaseResponse<RechargeInfo>>rechargeinfo(int type, String token){
        return  api.getRechargeInfo(type,token);
    }
@@ -33,5 +35,17 @@ public class RetrefitManger {
     //登录
     public Observable<BaseResponse<LoginInfo>> login(String username, String password){
         return api.login(username, password);
+    }
+    //自动登录
+    public Observable<BaseResponse<LoginInfo>>authlogin(String token){
+        return api.autoLogin(token);
+    }
+    //支付宝
+    public  Observable<BaseResponse<String>>RechargeAlipay(String amount){
+        return api.RechargeAlipay(amount);
+    }
+
+    public Observable<BaseResponse<WxpayInfo>>RechargeWechat(String token,String num){
+        return api.RechargeWechat(token,num);
     }
 }

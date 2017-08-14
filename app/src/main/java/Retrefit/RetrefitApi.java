@@ -1,10 +1,10 @@
 package Retrefit;
 
-import com.like.demorecycleview.login.LoginInfo;
+import com.woman.samecity.login.LoginInfo;
 
-import Base.BasePresenter;
 import Base.BaseResponse;
 import Recharge.RechargeInfo;
+import Recharge.wechatpay.WxpayInfo;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -31,4 +31,15 @@ public interface RetrefitApi {
     @POST("user/loginphone")
     Observable<BaseResponse<LoginInfo>> login(@Query("username") String username,
                                               @Query("password") String password);
+
+    @POST("user/autoLogin")
+    Observable<BaseResponse<LoginInfo>> autoLogin(@Query("token") String token);
+
+    @GET("payment/aliPay")
+    Observable<BaseResponse<String>> RechargeAlipay(@Query("num") String account);
+    @GET("payment/appWeixin")
+    Observable<BaseResponse<WxpayInfo>>RechargeWechat(@Query("token")String token,
+                                                      @Query("num")String num);
+
+
 }

@@ -4,23 +4,54 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.like.demorecycleview"
+        applicationId "com.woman.samecity"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{
+            abiFilters 'armeabi'
+            abiFilters 'armeabi-v7a'
+            abiFilters 'x86'
+            abiFilters 'armea64-v8a'
+            abiFilters 'x86_64'
+            abiFilters 'mips'
+            abiFilters 'mips64'
+        }
+    }
+
+    signingConfigs{
+        debug{
+
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            versionNameSuffix " Debug"
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    productFlavors{
+        demorecyc{
+            resValue("string","app_name","RC测试")
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -35,4 +66,17 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.facebook.fresco:fresco:0.9.0+'
     testCompile 'junit:junit:4.12'
+    compile files('libs/BaiduLBS_Android.jar')
+    compile 'com.squareup.retrofit2:retrofit:2.0.1'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'com.squareup.okio:okio:1.7.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile files('libs/picasso-2.4.0.jar')
+    compile files('libs/alipaySdk-20170725.jar')
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
 }

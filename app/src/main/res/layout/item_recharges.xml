@@ -8,6 +8,7 @@
     android:paddingBottom="10dp"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="5dp"
+    android:background="@drawable/recharge_item_bg"
     android:paddingTop="10dp">
 
     <TextView
