@@ -43,7 +43,9 @@ public class DemoRecyclerView extends Activity implements RechargeInterface {
         mrechargePresenter.loadRechargeMap(2,"1110f83c48545a652f666c1bd6b25117");
         flAlipay= (FrameLayout) findViewById(R.id.fl_alipay);
         flwechat= (FrameLayout) findViewById(R.id.fl_wechat);
+        flAlipay.setSelected(true);
         tv_recharge_chanel= (TextView) findViewById(R.id.recharge_way);
+        tv_recharge_chanel.setText(getString((R.string.choosed_recharge_way),getString(R.string.recharge_alipay)));
         RxView.clicks(flAlipay)
                 .throttleFirst(50, TimeUnit.MILLISECONDS)
                 .subscribe(new Action1<Void>() {
