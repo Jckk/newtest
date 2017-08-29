@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.woman.samecity">
+    package="com.woman.RCTest">
 <!--极光-->
     <permission
-        android:name="com.woman.samecity.permission.JPUSH_MESSAGE"
+        android:name="com.woman.RCTest.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature"/>
     <!-- Required -->
-    <uses-permission android:name="com.woman.samecity.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="com.woman.RCTest.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -59,7 +59,7 @@
     <!--百度定位end-->
 
     <application
-        android:name="com.woman.samecity.DemoRecyclerApplication"
+        android:name="com.woman.RCTest.DemoRecyclerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -68,22 +68,24 @@
         android:theme="@style/AppTheme"
         >
         <!--android:persistent="true"此属性保证应用一直在运行，推送用到-->
-        <activity android:name="com.woman.samecity.MainActivity">
+        <activity android:name="com.woman.RCTest.MainActivity">
+
+        </activity>
+        <activity android:name="com.woman.RCTest.DemoRecyclerView">
+        </activity>
+        <activity android:name="com.woman.RCTest.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="com.woman.samecity.DemoRecyclerView">
-        </activity>
-        <activity android:name="com.woman.samecity.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
 
         </activity>
-        <activity android:name="com.woman.samecity.login.LoginActivity"></activity>
-        <activity android:name="com.woman.samecity.login.RegisterActivity"></activity>
-        <activity android:name="com.woman.samecity.chat.ChatActivity"></activity>
+        <activity android:name="com.woman.RCTest.login.LoginActivity"></activity>
+        <activity android:name="com.woman.RCTest.login.RegisterActivity"></activity>
+        <activity android:name="com.woman.RCTest.chat.ChatActivity"></activity>
+        <activity android:name=".chat.ChatListActivity"></activity>
         <!--百度定位-->
         <service android:name="com.baidu.location.f"
             android:enabled="true"
@@ -101,7 +103,7 @@
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
-            android:exported="false"
+            android:exported="true"
             android:process=":notify"
             >
             <intent-filter>
@@ -116,11 +118,12 @@
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
-            android:exported="false"
+            android:exported="true"
+            android:process=":notify"
         >
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="com.woman.samecity" />
+                <category android:name="com.woman.RCTest" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -148,7 +151,7 @@
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.im.android.action.IM_RESPONSE" />
                 <action android:name="cn.jpush.im.android.action.NOTIFICATION_CLICK_PROXY" />
-                <category android:name="com.woman.samecity" />
+                <category android:name="com.woman.RCTest" />
             </intent-filter>
         </receiver>
 
@@ -165,6 +168,8 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="f15fbe6bd0cbe40bd7e6011e" />
+        <!--ed6d409b652343da7aa79780--><!--同城的-->
+        <!--f15fbe6bd0cbe40bd7e6011e--><!--RC-->
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
@@ -172,17 +177,27 @@
         <service
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:process=":remote">
             <intent-filter >
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="com.woman.samecity"/>
+                <category android:name="com.woman.RCTest"/>
             </intent-filter>
+        </service>
+
+        <!--自定义的推送服务-->
+        <service android:name="com.woman.PushServicecustom"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
         </service>
         <!-- 用户自定义的广播接收器--><!--离线推消息就是靠的这个广播接收器-->
         <receiver
-            android:name="com.woman.samecity.BoardcastReceiver"
-            android:enabled="true">
-            <intent-filter>
+            android:name=".BoardcastReceiver"
+            android:enabled="true"
+            android:process=":remote"
+            >
+            <intent-filter android:priority="1000">
                 <!--Required 用户注册SDK的intent-->
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
                 <!--Required 用户接收SDK消息的intent-->
@@ -193,9 +208,10 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />
                 <action android:name="android.intent.action.BOOT_COMPLETED"/><!--开机广播-->
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/><!--网络状态改变广播-->
-                <category android:name="com.woman.samecity" />
+                <category android:name="com.woman.RCTest" />
             </intent-filter>
         </receiver>
 
@@ -208,7 +224,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.woman.samecity" />
+                <category android:name="com.woman.RCTest" />
             </intent-filter>
         </activity>
         <!-- SDK核心功能-->
@@ -219,7 +235,7 @@
             android:theme="@style/MyDialogStyle">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.woman.samecity" />
+                <category android:name="com.woman.RCTest" />
             </intent-filter>
         </activity>
         <!-- Required SDK核心功能-->

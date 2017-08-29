@@ -1,11 +1,11 @@
-package com.woman.samecity;
+package com.woman.RCTest;
 
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.woman.samecity.chat.ChatNotify;
+import com.woman.RCTest.chat.ChatNotify;
 import com.woman.baidulocation.LocationService;
-import com.woman.samecity.SP.SpHelper;
+import com.woman.RCTest.SP.SpHelper;
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.im.android.api.JMessageClient;

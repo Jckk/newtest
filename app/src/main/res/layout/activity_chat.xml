@@ -73,6 +73,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+            <ImageButton
+                android:id="@+id/imb_chat_voice"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/jmui_voice"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center"
+                />
             <EditText
                 android:id="@+id/edv_msg"
                 android:layout_width="0dp"
@@ -80,6 +89,16 @@
                 android:layout_weight="1"
                 android:textSize="16sp"
                 android:hint="请输入内容"/>
+            <Button
+                android:id="@+id/btn_press_say"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pressed_say"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:background="@drawable/chat_voice_bg"
+                />
             <TextView
                 android:id="@+id/editText_send"
                 android:layout_width="wrap_content"

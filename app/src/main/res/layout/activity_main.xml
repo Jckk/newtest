@@ -78,5 +78,13 @@
         android:layout_alignBottom="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2" />
+    <TextView
+        android:id="@+id/tv_chat_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="聊天列表"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

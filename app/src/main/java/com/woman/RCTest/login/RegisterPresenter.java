@@ -1,8 +1,8 @@
-package com.woman.samecity.login;
+package com.woman.RCTest.login;
 
 import android.content.Context;
 
-import com.woman.samecity.SP.LocalDataManger;
+import com.woman.RCTest.SP.LocalDataManger;
 
 import Base.BaseObserver;
 import Base.BasePresenter;

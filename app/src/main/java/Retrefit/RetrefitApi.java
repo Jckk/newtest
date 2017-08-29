@@ -1,6 +1,6 @@
 package Retrefit;
 
-import com.woman.samecity.login.LoginInfo;
+import com.woman.RCTest.login.LoginInfo;
 
 import Base.BaseResponse;
 import Recharge.RechargeInfo;

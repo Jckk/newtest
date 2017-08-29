@@ -1,4 +1,4 @@
-package com.woman.samecity;
+package com.woman.RCTest;
 
 import android.Manifest;
 import android.app.Activity;
@@ -22,10 +22,11 @@ import android.widget.Toast;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.jakewharton.rxbinding.view.RxView;
-import com.woman.samecity.chat.ChatActivity;
+import com.woman.RCTest.chat.ChatActivity;
+import com.woman.RCTest.chat.ChatListActivity;
 import com.woman.baidulocation.LocationService;
-import com.woman.samecity.SP.LocalDataManger;
-import com.woman.samecity.login.LoginActivity;
+import com.woman.RCTest.SP.LocalDataManger;
+import com.woman.RCTest.login.LoginActivity;
 
 import Util.Packages;
 import cn.jpush.im.android.api.JMessageClient;
@@ -35,7 +36,7 @@ import rx.functions.Action1;
 public class MainActivity extends Activity {
     private static final String TAG = "info";
     private Button btn_recharge,btn_loginout;
-    private TextView tv_version,tv_baidu_location,tv_chat_with_service,tv_id;//版本，定位，客服
+    private TextView tv_version,tv_baidu_location,tv_chat_with_service,tv_id,tv_chat_list;//版本，定位，客服，用户id,聊天列表
     //定位，只使用一次，用后即焚
     private LocationService mlocationService;
     private ResponseLocationListener mresponseLocationListener=new ResponseLocationListener();
@@ -51,20 +52,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // this.startService(new Intent(this, PushService.class));//开启极光推送的服务
         //判断是否是6.0系统
         if (Build.VERSION.SDK_INT>=23){
             requestPermission();
         }
         //一进来就定位请求
         requestlocation();
-        //init();//极光登录注册的操作
+        init();//极光登录注册的操作
         btn_recharge= (Button) findViewById(R.id.btn_recyclerview);
         btn_loginout= (Button) findViewById(R.id.btn_loginout);
         tv_version= (TextView) findViewById(R.id.app_vesion);
         tv_baidu_location= (TextView) findViewById(R.id.baidulbs);
         tv_chat_with_service= (TextView) findViewById(R.id.tv_chat_with_service);
         tv_id= (TextView) findViewById(R.id.tv_id);
+        tv_chat_list= (TextView) findViewById(R.id.tv_chat_list);
         tv_version.setText(getString(R.string.version, Packages.getVersionName(this)));
         //tv_id.setText(LocalDataManger.getInstance().getLoginInfo().getUserId());
         btn_recharge.setOnClickListener(new View.OnClickListener() {
@@ -91,12 +92,30 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                     }
                 });
+        RxView.clicks(tv_chat_list)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        Intent intent=new Intent(MainActivity.this, ChatListActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
 
     }
 
     private void init() {
-        jimname="RC"+LocalDataManger.getInstance().getLoginInfo().getUserId();
-        jimpass="RC"+LocalDataManger.getInstance().getLoginInfo().getUserId();
+        //jimname="RC"+LocalDataManger.getInstance().getLoginInfo().getUserId();
+        //jimpass="RC"+LocalDataManger.getInstance().getLoginInfo().getUserId();
+        //jimname="meilibo8406";
+        //jimpass="meilibo8406";
+        //jimname="meilibo8398";
+        //jimpass="meilibo8398";
+        jimname="RC10584";
+        jimpass="RC10584";
+        //jimname="RC10584";
+        //jimpass="RC10584";
+
         if (JMessageClient.getMyInfo()==null){
             for (int i=0;i<3;i++){
                 JIMregister();
@@ -121,6 +140,7 @@ public class MainActivity extends Activity {
             public void gotResult(int i, String s) {
                 if (i==0){
                     JIML=true;
+                    //Log.i("info","jg"+"极光登录成功");
                     Log.i(TAG, "gotResult: "+"极光登录成功");
                 }
             }
@@ -133,11 +153,13 @@ public class MainActivity extends Activity {
             public void gotResult(int i, String s) {
                 if (i==0){
                     JIMR=true;
+                    //Log.i("info","jg"+"极光注册成功");
                     Log.i(TAG, "gotResult: "+"极光注册成功");
                 }
                 else {
                     if (s.equals("user exist")){
                         JIMR=true;
+                       // Log.i("info","jg"+"极光账号已经存在");
                         Log.i(TAG, "gotResult: "+"极光账号已经存在");
                     }
                 }

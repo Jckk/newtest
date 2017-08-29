@@ -17,5 +17,8 @@
     <string name="recharge_wechat">微信支付</string>
     <string name="choosed_recharge_way">支付方式:%1$s</string>
 
+    <string name="pressed_say">按住说话</string>
+    <string name="pressed_finish">松开结束</string>
+
 
 </resources>

@@ -1,10 +1,10 @@
-package com.woman.samecity.SP;
+package com.woman.RCTest.SP;
 
 import android.content.Context;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.woman.samecity.login.LoginInfo;
+import com.woman.RCTest.login.LoginInfo;
 
 /**
  * Created by Administrator on 2017/7/21 0021.

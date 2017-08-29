@@ -1,4 +1,4 @@
-package com.woman.samecity;
+package com.woman.RCTest;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -38,9 +38,9 @@ public class DemoRecyclerView extends Activity implements RechargeInterface {
         setContentView(R.layout.activity_recycleview);
         recyclerView= (RecyclerView) findViewById(R.id.test_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);//保持item的宽高不变
         mrechargePresenter=new RechargePresenter(this,this);
-        mrechargePresenter.loadRechargeMap(2,"1110f83c48545a652f666c1bd6b25117");
+        mrechargePresenter.loadRechargeMap(2,"1110f83c48545a652f666c1bd6b25117");//加载充值列表的接口
         flAlipay= (FrameLayout) findViewById(R.id.fl_alipay);
         flwechat= (FrameLayout) findViewById(R.id.fl_wechat);
         flAlipay.setSelected(true);

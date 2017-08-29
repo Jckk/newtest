@@ -47,7 +47,7 @@ public abstract class SimpleRecyclerAdapter<Data, Holder extends SimpleRecyclerH
                 parent, false);
         return createHolder(view);
     }
-
+    //绑定数据
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         holder.displayData(dataList.get(position));

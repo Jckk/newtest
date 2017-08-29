@@ -1,6 +1,6 @@
-package com.woman.samecity.SP;
+package com.woman.RCTest.SP;
 
-import com.woman.samecity.login.LoginInfo;
+import com.woman.RCTest.login.LoginInfo;
 
 /**
  * Created by Administrator on 2017/7/21 0021.

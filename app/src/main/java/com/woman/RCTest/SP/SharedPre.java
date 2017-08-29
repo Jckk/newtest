@@ -1,4 +1,4 @@
-package com.woman.samecity.SP;
+package com.woman.RCTest.SP;
 
 import android.content.Context;
 import android.content.SharedPreferences;

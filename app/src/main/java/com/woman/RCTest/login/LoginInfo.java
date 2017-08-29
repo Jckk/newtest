@@ -1,4 +1,4 @@
-package com.woman.samecity.login;
+package com.woman.RCTest.login;
 
 import com.google.gson.annotations.SerializedName;
 

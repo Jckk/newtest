@@ -1,4 +1,4 @@
-package com.woman.samecity.login;
+package com.woman.RCTest.login;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,8 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
-import com.woman.samecity.MainActivity;
-import com.woman.samecity.R;
+import com.woman.RCTest.MainActivity;
+import com.woman.RCTest.R;
 
 import rx.functions.Action1;
 

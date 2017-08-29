@@ -1,4 +1,4 @@
-package com.woman.samecity.login;
+package com.woman.RCTest.login;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.woman.samecity.MainActivity;
-import com.woman.samecity.R;
+import com.woman.RCTest.MainActivity;
+import com.woman.RCTest.R;
 
 /**
  * Created by Administrator on 2017/7/21 0021.

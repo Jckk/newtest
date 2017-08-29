@@ -1,4 +1,4 @@
-package com.woman.samecity;
+package com.woman.RCTest;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.woman.samecity.SP.LocalDataManger;
-import com.woman.samecity.login.LoginActivity;
-import com.woman.samecity.login.LoginInfo;
+import com.woman.RCTest.SP.LocalDataManger;
+import com.woman.RCTest.login.LoginActivity;
+import com.woman.RCTest.login.LoginInfo;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -90,7 +90,7 @@ public class SplashActivity extends Activity implements SplashInterface {
     }
     @Override
     public void authloginfail() {
-        Intent intent=new Intent(this,LoginActivity.class);
+        Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();
     }

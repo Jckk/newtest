@@ -1,9 +1,9 @@
-package com.woman.samecity.chat;
+package com.woman.RCTest.chat;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.woman.samecity.DemoRecyclerApplication;
+import com.woman.RCTest.DemoRecyclerApplication;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.content.TextContent;
@@ -38,7 +38,7 @@ public class ChatNotify {
             String appKey = msg.getFromAppKey();
             ConversationType type = msg.getTargetType();// 	getTargetType()  获取消息发送对象的类型。单聊(Single)或者群聊(Group
             Conversation conv;
-            Intent notificationIntent = new Intent(mcontext, ChatActivity.class);
+            Intent notificationIntent = new Intent(mcontext, ChatListActivity.class);
             //单聊
             if (type == ConversationType.single) {
                 conv = JMessageClient.getSingleConversation(targetId, appKey);

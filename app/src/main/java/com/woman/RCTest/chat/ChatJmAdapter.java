@@ -1,4 +1,4 @@
-package com.woman.samecity.chat;
+package com.woman.RCTest.chat;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -9,10 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.woman.samecity.R;
+import com.woman.RCTest.R;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.jpush.im.android.api.content.TextContent;
@@ -48,6 +49,7 @@ public class ChatJmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 return msg.getDirect()==MessageDirect.send ?TYPE_SEND_TXT:TYPE_RECEIVE_TXT;
             case image:
                 return msg.getDirect()==MessageDirect.send ?TYPE_SEND_IMAGE:TYPE_RECEIVER_IMAGE;
+            case voice:
             default:
                 break;
         }
@@ -88,11 +90,11 @@ public class ChatJmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
            /* if (position == 0) {
             }
             else {
-                    if (DateUtils.isCloseEnough(list.get(position).getMsgTime(), list.get(position - 1).getMsgTime())) {
+                    if (DateUtils.isCloseEnough(mMsgList.get(position).getMsgTime(), mMsgList.get(position - 1).getMsgTime())) {
                     ((SendTxtViewHolder) holder).tv_send_txt_date.setVisibility(View.GONE);
                     }
                     else {
-                    ((SendTxtViewHolder) holder).tv_send_txt_date.setText(DateUtils.getTimestampString(new Date(list.get(position).getMsgTime())));
+                    ((SendTxtViewHolder) holder).tv_send_txt_date.setText(DateUtils.getTimestampString(new Date(mMsgList.get(position).getMsgTime())));
                     ((SendTxtViewHolder) holder).tv_send_txt_date.setVisibility(View.VISIBLE);
                 }
             }*/
@@ -120,11 +122,8 @@ public class ChatJmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mMsgList.add(msg);
         notifyDataSetChanged();
     }
-    public void addtxttolist(String s){
 
-    }
     //以下四个内部类为定义的不同的holder
-
     //发送文本
     class SendTxtViewHolder extends RecyclerView.ViewHolder{
         public TextView tv_send_txt_msg,tv_send_txt_date;

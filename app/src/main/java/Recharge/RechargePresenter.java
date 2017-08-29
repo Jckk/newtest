@@ -70,7 +70,7 @@ public class RechargePresenter extends BasePresenter<RechargeInterface> {
         Subscription subscription=mretrefitManger.RechargeAlipay(amount)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Func1<BaseResponse<String>, PayResult>() {
+                .map(new Func1<BaseResponse<String>, PayResult>() {//将string转换成payresult
                     @Override
                     public PayResult call(BaseResponse<String> stringBaseResponse) {
                         String data=stringBaseResponse.getData();
